@@ -172,7 +172,7 @@ def settings_markup(values: dict):  # keyboard for settings
 
 
 @bot.message_handler(commands=['settings'])
-def settings(message):  # TODO fix freezes
+def settings(message):
     values = {f'{category_tag}{splitter}{notification_tag}': 'Уведомления', f'{category_tag}{splitter}{page_tag}': 'Страница',
               f'category{splitter}title': 'Подпись'}
 
@@ -251,7 +251,6 @@ def update_settings(field: str, new_state, answer_to_user: str, replied_message)
         bot.send_message(chat_id=replied_message.chat.id, text=answer_to_user)
     else:
         bot.send_message(chat_id=replied_message.chat.id, text="Ошибка. Попробуйте позже")
-    # TODO delete old messages
 
 
 def main():

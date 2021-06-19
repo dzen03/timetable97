@@ -92,7 +92,8 @@ def update_next(days_delta):
             return False
 
         subprocess.call(['libreoffice6.1', '--convert-to', 'pdf', str(new_path)])  # convert docx to pdf
-        # TODO fix your version of libreoffice
+        # TODO fix version (e.g. libreoffice7.1) of libreoffice for LINUX
+        # or swap 'libreoffice6.1' to 'YOUR_PATH\\LibreOffice\\program\\soffice.exe' for WINDOWS
 
         with Image(filename=(path_to_files(days_delta).split('.')[0] + '.pdf'), resolution=300) as img:  # pdf to jpg
             with img.convert('jpeg') as converted:
@@ -143,6 +144,7 @@ def refresh():
     global today_hash
 
     subprocess.call([path_app + 'g.sh'])  # update drive
+    # TODO delete for Windows
 
     if is_next_exist(next_day(True)):
         if today_hash == '':
